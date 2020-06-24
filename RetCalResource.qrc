@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="newPrefix">
+    <file>Capture.JPG</file>
+    <file>Retract Modelsm.jpg</file>
+  </qresource>
+</RCC>
