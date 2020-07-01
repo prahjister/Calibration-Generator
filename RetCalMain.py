@@ -186,7 +186,7 @@ def gengcode ():
         file.write(f";Start Movement\n")
         file.write(f";\n")
         file.write(f"G1 Z2\n")
-        file.write(f"G1 {int(ts)*60} X{xpos} Y{ypos} Z{zpos}\n")
+        file.write(f"G1 F{int(ts)*60} X{xpos} Y{ypos} Z{zpos}\n")
         file.write(f";\n")
         eValueresult = eValue(60)
 
