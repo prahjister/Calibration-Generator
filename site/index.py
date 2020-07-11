@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, make_response
+from flask import Flask, render_template, request, Response
 import tempfile
 from decimal import *
 
@@ -9,11 +9,6 @@ def hello():
     return render_template('index.html')
     
 
-def set_cookie(request, res):
-    res = make_response("Setting a cookie")
-    res.set_cookie('bedTemp', request.form['bedTemp'], max_age=60*60*24*365*2)
-    
-    
 @app.route('/gencode', methods=('GET', 'POST') )    
 def gencode():  
     
@@ -496,10 +491,8 @@ def gencode():
     #Turn off Bed
     file.write(f"M140 S0\n")
 
-
     file.seek(0)
-    response = make_response(file.read())
-    response.headers["Content-Disposition"] = "attachment; filename=calibration.gcode"
-    set_cookie(request, response)
-    return response
-    #return "A"
+    return Response( file, mimetype="text/plain", headers={"Content-disposition": "attachment; filename=calibration.gcode"})
+
+
+
