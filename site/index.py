@@ -37,7 +37,7 @@ def gencode():
     srd = float(startRetractiondistance)
     ird = float(incrementRetractiondistance)
         
-    file.write(f';Calibration Generator 1.3.1\n')
+    file.write(f';Calibration Generator 1.3.2\n')
     file.write(f";\n")
     file.write(f";\n")
     file.write(f";Retraction Distance from the top looking down\n")
