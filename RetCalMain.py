@@ -36,7 +36,7 @@ def gengcode ():
         srd = float(ui.startRetractiondistance.text())
         ird = float(ui.incrementRetractiondistance.text())
         
-        file.write(f";Calibration Generator 1.3.1\n")
+        file.write(f";Calibration Generator 1.3.3\n")
         file.write(f";\n")
         file.write(f";\n")
         file.write(f";Retraction Distance from the top looking down\n")
