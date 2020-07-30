@@ -133,7 +133,7 @@ def gencode():
         multiplierExtrusion = float(extrusionMultiplier)
 
         area = (diameterNozzle - heightLayer) * heightLayer + 3.14159 * (heightLayer/2)**2
-        eValueresult = (area * extrusionLength * 4)/(3.14159 * diameterFilament**2/multiplierExtrusion*1.25)
+        eValueresult = (area * extrusionLength * 4)/(3.14159 * diameterFilament**2/multiplierExtrusion)
         return eValueresult
     
     #start Gcode
