@@ -1,0 +1,7 @@
+venv/
+dist/
+build/
+__pycache__/
+RetCalMain.spec
+RetCalResource_rc.py
+RetCalui.py
