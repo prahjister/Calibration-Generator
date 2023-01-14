@@ -36,7 +36,7 @@ def gengcode ():
         srd = float(ui.startRetractiondistance.text())
         ird = float(ui.incrementRetractiondistance.text())
         
-        file.write(f";Calibration Generator 1.3.3\n")
+        file.write(f";Calibration Generator 1.3.1\n")
         file.write(f";\n")
         file.write(f";\n")
         file.write(f";Retraction Distance from the top looking down\n")
@@ -152,7 +152,7 @@ def gengcode ():
             multiplierExtrusion = float(ui.extrusionMultiplier.text())
 
             area = (diameterNozzle - heightLayer) * heightLayer + 3.14159 * (heightLayer/2)**2
-            eValueresult = (area * extrusionLength * 4)/(3.14159 * diameterFilament**2/multiplierExtrusion)
+            eValueresult = (area * extrusionLength * 4)/(3.14159 * diameterFilament**2/multiplierExtrusion*1.25)
             return eValueresult
 
 

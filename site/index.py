@@ -37,7 +37,7 @@ def gencode():
     srd = float(startRetractiondistance)
     ird = float(incrementRetractiondistance)
         
-    file.write(f';Calibration Generator 1.3.3\n')
+    file.write(f';Calibration Generator 1.3.4\n')
     file.write(f";\n")
     file.write(f";\n")
     file.write(f";Retraction Distance from the top looking down\n")
@@ -133,7 +133,7 @@ def gencode():
         multiplierExtrusion = float(extrusionMultiplier)
 
         area = (diameterNozzle - heightLayer) * heightLayer + 3.14159 * (heightLayer/2)**2
-        eValueresult = (area * extrusionLength * 4)/(3.14159 * diameterFilament**2/multiplierExtrusion)
+        eValueresult = (area * extrusionLength * 4)/(3.14159 * diameterFilament**2/(multiplierExtrusion+.07539))
         return eValueresult
     
     #start Gcode
@@ -149,6 +149,7 @@ def gencode():
     file.write(f"G92 E0\n")
     file.write(f"G1 F200 E1\n")
     file.write(f"G92 E0\n")
+    file.write(f"G90\n")
 
     file.write(f"{sgcode}\n")
 
@@ -496,3 +497,175 @@ def gencode():
 
 
 
+@app.route('/genmesh', methods=('GET', 'POST') )    
+def genmesh():  
+    
+    bedTemp	= 	request.form['bedTemp']
+    dimensionX	= 	request.form['dimensionX']
+    dimensionY	= 	request.form['dimensionY']
+    extrusionMultiplier	= 	request.form['extrusionMultiplier']
+    fanSpeed	= 	request.form['fanSpeed']
+    filamentDiameter	= 	request.form['filamentDiameter']
+    layerHeight	= 	request.form['layerHeight']
+    nozzleDiameter	= 	request.form['nozzleDiameter']
+    printSpeed	= 	request.form['printSpeed']
+    startRetractiondistance	= 	request.form['startRetractiondistance']
+    startRetractionspeed	= 	request.form['startRetractionspeed']
+    tempStarthotend	= 	request.form['tempStarthotend']
+    customGcode	= 	request.form['customGcode']
+
+    meshX	= 	request.form['meshX']
+    meshY	= 	request.form['meshY']
+
+
+
+    file = tempfile.TemporaryFile(mode='w+', encoding='utf-8')
+    srd = float(startRetractiondistance)
+    srs = float(startRetractionspeed)
+    tsh = float(tempStarthotend)
+    fs = float(fanSpeed)
+    lh = float(layerHeight)
+    ts = float(100)
+    dx = float(dimensionX)
+    dy = float(dimensionY)
+    ps = float(printSpeed)
+    nd = float(nozzleDiameter)
+    fd = float(filamentDiameter)
+    em = float(extrusionMultiplier)
+    tb = float(bedTemp)
+    mx = float(meshX)
+    my = float(meshY)    
+    
+    #Custom Gcode
+    sgcode = str(customGcode)
+
+
+    # Generate E Value  https://3dprinting.stackexchange.com/questions/10171/how-is-e-value-calculated-in-slic3r 
+
+    def eValue ( extrusionLength ):
+
+        diameterNozzle = float(nozzleDiameter)
+        heightLayer = float(layerHeight)
+        diameterFilament = float(filamentDiameter)
+        multiplierExtrusion = float(extrusionMultiplier)
+
+        area = (diameterNozzle - heightLayer) * heightLayer + 3.14159 * (heightLayer/2)**2
+        eValueresult = (area * extrusionLength * 4)/(3.14159 * diameterFilament**2/(multiplierExtrusion+.07539))
+        return eValueresult
+    
+    #start Gcode
+    file.write(f";Start Gcode\n")
+    file.write(f"M140 S{int(tb)}\n")
+    file.write(f"M105\n")
+    file.write(f"M190 S{int(tb)}\n")
+    file.write(f"M104 S{int(tsh)}\n")
+    file.write(f"M105\n")
+    file.write(f"M109 S{int(tsh)}\n")
+    file.write(f"M82\n")
+    file.write(f"G28\n")
+    file.write(f"G92 E0\n")
+    file.write(f"G1 F200 E1\n")
+    file.write(f"G92 E0\n")
+    file.write(f"G90\n")
+
+    file.write(f"{sgcode}\n")
+
+    file.write(f";\n")
+    file.write(f";\n")
+
+    #find corner
+    
+    mxint = int(mx)
+    myint = int(my)
+
+    xpos = dx/2-(mxint/2)
+    ypos = dy/2-(myint/2)
+    zpos = lh
+    epos = 0
+    
+
+
+    #Start Movement        
+    file.write(f";Start Movement\n")
+    file.write(f";\n")
+    file.write(f"G1 Z2\n")
+    file.write(f"G1 F{int(ts)*60} X{xpos} Y{ypos} Z{zpos}\n")
+    file.write(f";\n")
+    eValueresult = eValue(mxint)
+
+    #Overextruding Raft
+    evalueincrease = eValueresult*1.25*em
+    eValueresult = evalueincrease
+
+
+    remx = xpos
+    remy = ypos
+
+    file.write(f";Layer 1\n")
+
+    #Horizontal
+
+    for loopx in range(myint//2):
+	
+	
+	
+        file.write(f"G1 F{int(ps*60/2)} X{xpos+mxint} Y{ypos} E{round(Decimal(eValueresult),5)}\n")
+        xpos = xpos + mxint
+        eValueresult = eValueresult + evalueincrease
+        file.write(f"G0 F{int(ts)*60} X{xpos} Y{ypos+1}\n")
+        ypos = ypos + 1
+        file.write(f"G1 F{int(ps*60/2)} X{xpos-mxint} Y{ypos} E{round(Decimal(eValueresult),5)}\n")
+        xpos = xpos - mxint
+        eValueresult = eValueresult + evalueincrease
+        file.write(f"G0 F{int(ts)*60} X{xpos} Y{ypos+1}\n")
+        ypos = ypos + 1
+
+    #Bring back to raft origin
+
+    file.write(f"G0 F{int(ts)*60} X{xpos} Y{ypos} Z{round(Decimal(lh*3),2)}\n")
+    file.write(f"G0 F{int(ts)*60} X{remx} Y{remy} Z{lh+lh}\n")
+    xpos = remx
+    ypos = remy
+
+    file.write(f";Layer 2\n")
+
+    file.write(f"G92 E0\n")
+	
+    eValueresult = eValue(myint)
+    evalueincrease = eValueresult*1.25*em
+    eValueresult = evalueincrease
+
+    #Vertical
+
+    for loopx in range(mxint//2):
+        file.write(f"G1 F{int(ps*60/2)} X{xpos} Y{ypos+myint} E{round(Decimal(eValueresult),5)}\n")
+        ypos = ypos + myint
+        eValueresult = eValueresult + evalueincrease
+        file.write(f"G0 F{int(ts)*60} X{xpos+1} Y{ypos}\n")
+        xpos = xpos + 1
+        file.write(f"G1 F{int(ps*60/2)} X{xpos} Y{ypos-myint} E{round(Decimal(eValueresult),5)}\n")
+        ypos = ypos - myint
+        eValueresult = eValueresult + evalueincrease
+        file.write(f"G0 F{int(ts)*60} X{xpos+1} Y{ypos}\n")
+        xpos = xpos + 1    
+
+
+    #End Game
+
+    #Raise 5mm
+    file.write(f"G1 Z5\n")    
+    #Absolute Position
+    file.write(f"G90\n")
+    #Home X Y
+    file.write(f"G28 X0 Y0\n")
+    #Turn off Steppers
+    file.write(f"M84\n")
+    #Turn off Fan
+    file.write(f"M107\n")
+    #Turn off Hotend
+    file.write(f"M104 S0\n")
+    #Turn off Bed
+    file.write(f"M140 S0\n")
+
+    file.seek(0)
+    return Response( file, mimetype="text/plain", headers={"Content-disposition": "attachment; filename=meshonly.gcode"})
