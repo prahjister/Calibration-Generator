@@ -1,396 +1,409 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <script data-ad-client="ca-pub-1772799460600876" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-4CETE64NMY"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-4CETE64NMY');
-</script>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Retraction Calibration Tool</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-  </head>
-  <body>
+<head>
+  <script data-ad-client="ca-pub-1772799460600876" async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4CETE64NMY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
 
-		<div class="container pt-5">
-		  <div class="row">
-                <div class="col-lg-12">
-                    <h1>Calibration Generator 1.3.4</h1>
-					<p></p>
-<p><a href="https://www.cnx-software.com/2020/07/08/3d-printer-retraction-calibration-vol-ii-calibration-generator-program-release/" target="_blank" rel="noopener">Instructions</a></p>
-<p></p>
-<p><a href="https://www.facebook.com/groups/199257421413533/" target="_blank" rel="noopener">Facebook Group</a></p>
-<p></p>
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
-<input type="hidden" name="cmd" value="_donations" />
-<input type="hidden" name="business" value="MXV27AEEGVUL8" />
-<input type="hidden" name="currency_code" value="USD" />
-<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
-<img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
-</form>
-<p>&nbsp;</p>
-</p>
-<p>Warning!!! If you stop the gcode generated midprint restart your printer. It uses a mixture of relative and absolute movements.&nbsp;</p>
-<p>&nbsp;</p>
+    gtag('config', 'G-4CETE64NMY');
+  </script>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Retraction Calibration Tool</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+    crossorigin="anonymous"></script>
+  <style type="text/css">
+    .top-list li {
+      margin-bottom: 1rem
+    }
+    label {
+      margin-bottom: .25rem;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container pt-5">
+    <div class="row">
+      <div class="col-lg-12">
+        <h1 class="mb-3">Calibration Generator v1.3.4</h1> <!-- Suggest adding the word '3d Printer' before calibration, might be good for seo -->
+        <ul class="list-unstyled top-list mb-4">
+          <li>
+            <a href="https://www.cnx-software.com/2020/07/08/3d-printer-retraction-calibration-vol-ii-calibration-generator-program-release/"
+            target="_blank" rel="noopener">Instructions</a>
+          </li>
+          <li>
+            Have questions or need assistance? <br /> <a href="https://www.facebook.com/groups/199257421413533/" target="_blank" rel="noopener">Join our Facebook group</a>
+          </li>
+          <li>
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+              <input type="hidden" name="cmd" value="_donations" />
+              <input type="hidden" name="business" value="MXV27AEEGVUL8" />
+              <input type="hidden" name="currency_code" value="USD" />
+              <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit"
+                title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+              <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
+            </form>
+          </li>
+        </ul>
+
+        <div class="alert alert-warning mb-4">
+          <h4>Warning!!!</h4> If you stop the generated gcode midprint, restart your printer. It uses a mixture of relative and absolute movements.
+        </div>
+        </p>
+      </div>
+      <div class="col-lg-12">
+        <form action="gencode" method="post" novalidate>
+          <div class="row">
+            <div class="col-lg-7">
+              <div class="row ">
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label class="small" for="dimensionX">X Dimension</label>
+                    <input type="text" class="form-control small" name="dimensionX" value="220">
+                  </div>
                 </div>
-			<div class="col-md-11">
-	<form action="gencode" method="post" novalidate>
-    <div class="container-fluid">
-		<div class="row">
-			<div class="col-md-6">
-				<div class="row py-n3">
-					<div class="col-md-4">
-						<div class="form-group">
-							<label class="small" for="dimensionX">X Dimension</label>
-							<input type="text" class="form-control small" name="dimensionX" value="220">
-						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="form-group">
-							<label class="small" for="dimensionY">Y Dimension</label>
-							<input type="text" class="form-control small" name="dimensionY" value ="220">
-						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="form-group">
-							<label class="small" for="nozzleDiameter">Nozzle Diameter</label>
-							<input type="text" class="form-control small" name="nozzleDiameter" value="0.4">
-						</div>					
-					</div>
-				</div> 
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label class="small" for="dimensionY">Y Dimension</label>
+                    <input type="text" class="form-control small" name="dimensionY" value="220">
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label class="small" for="nozzleDiameter">Nozzle Diameter</label>
+                    <input type="text" class="form-control small" name="nozzleDiameter" value="0.4">
+                  </div>
+                </div>
+              </div>
 
-				<div class="row my-n3">
+              <div class="row">
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label class="small" for="layerHeight">Start Retraction Distance</label>
+                    <input type="text" class="form-control small" name="startRetractiondistance" value="0.5">
+                  </div>
+                </div>
 
-					<div class="col-md-4">
-						<div class="form-group">
-							<label class="small" for="layerHeight">Start Retraction Distance</label>
-							<input type="text" class="form-control small" name="startRetractiondistance" value="0.5">
-						</div>					
-					</div>
-					<div class="col-md-4">
-						<div class="form-group">
-							<label class="small" for="incrementRetractiondistance">Increment Retraction</label>
-							<input type="text" class="form-control" name="incrementRetractiondistance" value="0.5">
-						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="form-group">
-							<label class="small" for="filamentDiameter">Filament Diameter</label>
-							<input type="text" class="form-control" name="filamentDiameter" value="1.75">
-						</div>					
-					</div>
-				</div> 				
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label class="small" for="incrementRetractiondistance">Increment Retraction</label>
+                    <input type="text" class="form-control" name="incrementRetractiondistance" value="0.5">
+                  </div>
+                </div>
 
-				<div class="row my-n3">
-					<div class="col-md-4">
-						<div class="form-group">
-							<label class="small" for="startRetractionspeed">Start Retraction Speed</label>
-							<input type="text" class="form-control small" name="startRetractionspeed" value="10">
-						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="form-group">
-							<label class="small"  for="incrementRetractionspeed">Retraction Speed Inc</label>
-							<input type="text" class="form-control" name="incrementRetractionspeed" value= "10">
-						</div>					
-					</div>
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label class="small" for="filamentDiameter">Filament Diameter</label>
+                    <input type="text" class="form-control" name="filamentDiameter" value="1.75">
+                  </div>
+                </div>
+              </div>
 
-					<div class="col-md-4 ">
-						<div class="form-group">
-							<label class="small" for="startRetractiondistance">Layer Height</label>
-							<input type="text" class="form-control" name="layerHeight" value="0.2">
+              <div class="row ">
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label class="small" for="startRetractionspeed">Start Retraction Speed</label>
+                    <input type="text" class="form-control small" name="startRetractionspeed" value="10">
+                  </div>
+                </div>
 
-						</div>
-					</div>
-				</div> 
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label class="small" for="incrementRetractionspeed">Retraction Speed Inc</label>
+                    <input type="text" class="form-control" name="incrementRetractionspeed" value="10">
+                  </div>
+                </div>
 
-				<div class="row my-n3">
-					<div class="col-md-4 ">
-						<div class="form-group">
-							<label class="small" for="tempStarthotend">Start Temp </label>
-							<input type="text" class="form-control" name="tempStarthotend" value= "200">
+                <div class="col-lg-4 ">
+                  <div class="form-group">
+                    <label class="small" for="startRetractiondistance">Layer Height</label>
+                    <input type="text" class="form-control" name="layerHeight" value="0.2">
+                  </div>
+                </div>
+              </div>
 
-						</div>					
-					</div>
+              <div class="row">
+                <div class="col-lg-4 ">
+                  <div class="form-group">
+                    <label class="small" for="tempStarthotend">Start Temp </label>
+                    <input type="text" class="form-control" name="tempStarthotend" value="200">
+                  </div>
+                </div>
 
-					<div class="col-md-4">
-						<div class="form-group">
-							<label class="small" for="tempIncrementhotend">Increment Temp</label>
-							<input type="text" class="form-control" name="tempIncrementhotend" value= "0">
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label class="small" for="tempIncrementhotend">Increment Temp</label>
+                    <input type="text" class="form-control" name="tempIncrementhotend" value="0">
+                  </div>
+                </div>
 
-						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="form-group">
-							<label class="small" for="extrusionMultiplier">Extrusion Multiplier</label>
-							<input type="text" class="form-control" name="extrusionMultiplier" value="1">
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label class="small" for="extrusionMultiplier">Extrusion Multiplier</label>
+                    <input type="text" class="form-control" name="extrusionMultiplier" value="1">
+                  </div>
+                </div>
+              </div>
 
-						</div>					
-					</div>
-				</div> 
+              <div class="row">
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label class="small" for="layersTest">Fan Speed</label>
+                    <input type="text" class="form-control" name="fanSpeed" value="40">
+                  </div>
+                </div>
 
-				<div class="row my-n3">
-					<div class="col-md-4">
-						<div class="form-group">
-							<label class="small" for="layersTest">Fan Speed</label>
-							<input type="text" class="form-control" name="fanSpeed" value= "40">
-						</div>
-					</div>
-					<div class="col-md-4">					
-						<div class="form-group">
-							<label class="small" for="fanSpeedIncrement">Fan Speed Increment</label>
-							<input type="text" class="form-control" name="fanSpeedIncrement" value= "0">
-						</div>					
-					</div>
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label class="small" for="fanSpeedIncrement">Fan Speed Increment</label>
+                    <input type="text" class="form-control" name="fanSpeedIncrement" value="0">
+                  </div>
+                </div>
 
-					<div class="col-md-4">
-						<div class="form-group">
-							<label class="small" for="bedTemp" class="small" >Bed Temp</label>
-							<input type="text" class="form-control" name="bedTemp" value= "50">
-						</div>
-					</div>
-				</div> 
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label class="small" for="bedTemp" class="small">Bed Temp</label>
+                    <input type="text" class="form-control" name="bedTemp" value="50">
+                  </div>
+                </div>
+              </div>
 
-				<div class="row my-n2">
-					<div class="col-md-4">
-						<div class="form-group">
-							<label class="small" for="layersTest">Layers per Test</label>
-							<input type="text" class="form-control" name="layersTest" value= "25">
-						</div>					
-					</div>
+              <div class="row">
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label class="small" for="layersTest">Layers per Test</label>
+                    <input type="text" class="form-control" name="layersTest" value="25">
+                  </div>
+                </div>
 
-					<div class="col-md-4">
-						<div class="form-group">
-							<label class="small" or="tempStarthotend">Number of Tests </label>
-							<input type="text" class="form-control" name="numTests" value= "15">
-						</div>
-					</div>
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label class="small" or="tempStarthotend">Number of Tests </label>
+                    <input type="text" class="form-control" name="numTests" value="15">
+                  </div>
+                </div>
 
-					<div class="col-md-4">						
-						<div class="form-group">
-							<label class="small" for="travelSpeed">Travel Speed</label>
-							<input type="text" class="form-control small" name="travelSpeed" value= "100">
-						</div>					
-					</div>
-				</div> 
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label class="small" for="travelSpeed">Travel Speed</label>
+                    <input type="text" class="form-control small" name="travelSpeed" value="100">
+                  </div>
+                </div>
+              </div>
 
-				<div class="row my-n3">
-					<div class="col-md-4">						
+              <div class="row">
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label class="small" for="printSpeed">Print Speed</label>
+                    <input type="text" class="form-control" name="printSpeed" value="40">
+                  </div>
+                </div>
 
-						<div class="form-group">
-							<label class="small" for="printSpeed">Print Speed</label>
-							<input type="text" class="form-control" name="printSpeed" value= "40">
-						</div>	
-					</div>						
-					<div class="col-md-4">
-						<div class="form-group">
-							<label class="small" for="tempStarthotend">Custom Gcode </label>
-							<textarea class="form-control" name="customGcode"  rows="1" >;G29</textarea>
-						</div>
-					</div>
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label class="small" for="tempStarthotend">Custom Gcode </label>
+                    <textarea class="form-control" name="customGcode" rows="1">;G29</textarea>
+                  </div>
+                </div>
 
-					<div class="col-md-4">
-						<div class="col my-4">
-							<button type="submit" class="btn btn-success">
-								Generate GCode
-							</button>
-						</div>
-					</div> 
-				</div> 
-				<br><br>
-			</div>
-			<div class="col-md-6">
-				<img src="{{url_for('static', filename='Capture.JPG')}}" align="middle" />
-				<div class="row">
-					<div class="col-md-12">
-						<p>	Default settings should work with bowden tube. <br>
-						First try with defaults. Then adjust temps fan etc.<br><br>   
-						Notes:<br>
-	For delta set bed size to 0 for x and y <br>
-	For direct drive start with .5 starting retraction and .25 incriment<br>
-	For bowden start with .5 starting retraction and .5 incriment<br
-	To dial in further you can change starting retraction and increments.
+                <div class="col-lg-4 d-flex align-items-center justify-content-center" style="padding-top: 11px;">
+                  <button type="submit" class="btn btn-success flex-fill">
+                    Generate GCode
+                  </button>
+                </div>
+              </div>
+            </div>
 
-						</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+            <div class="col-lg-5">
+              <img src="{{url_for('static', filename='Capture.JPG')}}" align="middle" class="img-fluid" />
+              <div class="row">
+                <div class="col-lg-12">
+                  <p>
+                    Default settings should work with bowden tube. <br>
+                    First try with defaults. Then adjust temps fan etc.
+                  </p>
+                  <h5>
+                    Notes:
+                  </h5>
+                  <ul class="pl-3">
+                    <li>
+                      For <strong>delta</strong> set bed size to 0 for x and y
+                    </li>
+                    <li>
+                      For <strong>direct drive</strong> start with .5 starting retraction and .25 incriment
+                    </li>
+                    <li>
+                      For <strong>bowden</strong> start with .5 starting retraction and .5 incriment
+                    </li>
+                    <li>
+                      To dial in further you can change starting retraction and increments.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
 
 
-</a>  
-	</form>
-	
-<form action="genmesh" method="post" novalidate>
+        <form action="genmesh" method="post" novalidate>
+          <div class="row">
+            <div class="col-lg-12">
+              <h2>Mesh Only</h2>
+            </div>
 
-				<br>
-                <br>
-				                
-                    <h1>Mesh Only</h1>		
-					<br>
+            <div class="col-lg-7">
+              <div class="row">
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label class="small" for="dimensionX">X Dimension</label>
+                    <input type="text" class="form-control small" name="dimensionX" value="220">
+                  </div>
+                </div>
 
-<div class="container-fluid">
-		<div class="row">
-			<div class="col-md-6">
-				<div class="row py-n3">
-					<div class="col-md-4">
-						<div class="form-group">
-							<label class="small" for="dimensionX">X Dimension</label>
-							<input type="text" class="form-control small" name="dimensionX" value="220">
-						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="form-group">
-							<label class="small" for="dimensionY">Y Dimension</label>
-							<input type="text" class="form-control small" name="dimensionY" value ="220">
-						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="form-group">
-							<label class="small" for="nozzleDiameter">Nozzle Diameter</label>
-							<input type="text" class="form-control small" name="nozzleDiameter" value="0.4">
-						</div>					
-					</div>
-				</div> 
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label class="small" for="dimensionY">Y Dimension</label>
+                    <input type="text" class="form-control small" name="dimensionY" value="220">
+                  </div>
+                </div>
 
-				<div class="row my-n3">
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label class="small" for="nozzleDiameter">Nozzle Diameter</label>
+                    <input type="text" class="form-control small" name="nozzleDiameter" value="0.4">
+                  </div>
+                </div>
+              </div>
 
-					<div class="col-md-4">
-						<div class="form-group">
-							<label class="small" for="layerHeight">Retraction Distance</label>
-							<input type="text" class="form-control small" name="startRetractiondistance" value="5">
-						</div>					
-					</div>
-					<div class="col-md-4">
-						<div class="form-group">
-							<label class="small" for="filamentDiameter">Filament Diameter</label>
-							<input type="text" class="form-control" name="filamentDiameter" value="1.75">
-						</div>					
-					</div>
-				</div> 				
+              <div class="row">
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label class="small" for="layerHeight">Retraction Distance</label>
+                    <input type="text" class="form-control small" name="startRetractiondistance" value="5">
+                  </div>
+                </div>
 
-				<div class="row my-n3">
-					<div class="col-md-4">
-						<div class="form-group">
-							<label class="small" for="startRetractionspeed">Retraction Speed</label>
-							<input type="text" class="form-control small" name="startRetractionspeed" value="50">
-						</div>
-					</div>
-					
-					<div class="col-md-4 ">
-						<div class="form-group">
-							<label class="small" for="startRetractiondistance">Layer Height</label>
-							<input type="text" class="form-control" name="layerHeight" value="0.2">
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label class="small" for="filamentDiameter">Filament Diameter</label>
+                    <input type="text" class="form-control" name="filamentDiameter" value="1.75">
+                  </div>
+                </div>
+              </div>
 
-						</div>
-					</div>
-				</div> 
+              <div class="row">
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label class="small" for="startRetractionspeed">Retraction Speed</label>
+                    <input type="text" class="form-control small" name="startRetractionspeed" value="50">
+                  </div>
+                </div>
 
-				<div class="row my-n3">
-					<div class="col-md-4 ">
-						<div class="form-group">
-							<label class="small" for="tempStarthotend">Printing Temp</label>
-							<input type="text" class="form-control" name="tempStarthotend" value= "200">
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label class="small" for="startRetractiondistance">Layer Height</label>
+                    <input type="text" class="form-control" name="layerHeight" value="0.2">
+                  </div>
+                </div>
+              </div>
 
-						</div>					
-					</div>
+              <div class="row">
+                <div class="col-lg-4 ">
+                  <div class="form-group">
+                    <label class="small" for="tempStarthotend">Printing Temp</label>
+                    <input type="text" class="form-control" name="tempStarthotend" value="200">
+                  </div>
+                </div>
 
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label class="small" for="extrusionMultiplier">Extrusion Multiplier</label>
+                    <input type="text" class="form-control" name="extrusionMultiplier" value="1">
+                  </div>
+                </div>
+              </div>
 
-					<div class="col-md-4">
-						<div class="form-group">
-							<label class="small" for="extrusionMultiplier">Extrusion Multiplier</label>
-							<input type="text" class="form-control" name="extrusionMultiplier" value="1">
+              <div class="row">
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label class="small" for="layersTest">Fan Speed</label>
+                    <input type="text" class="form-control" name="fanSpeed" value="40">
+                  </div>
+                </div>
 
-						</div>					
-					</div>
-				</div> 
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label class="small" for="bedTemp" class="small">Bed Temp</label>
+                    <input type="text" class="form-control" name="bedTemp" value="50">
+                  </div>
+                </div>
+              </div>
 
-				<div class="row my-n3">
-					<div class="col-md-4">
-						<div class="form-group">
-							<label class="small" for="layersTest">Fan Speed</label>
-							<input type="text" class="form-control" name="fanSpeed" value= "40">
-						</div>
-					</div>
+              <div class="row">
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label class="small" for="printSpeed">Print Speed</label>
+                    <input type="text" class="form-control" name="printSpeed" value="40">
+                  </div>
+                </div>
 
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label class="small" for="customGcode">Custom Gcode </label>
+                    <textarea class="form-control" name="customGcode" rows="1">;G29</textarea>
+                  </div>
+                </div>
+              </div>
 
-					<div class="col-md-4">
-						<div class="form-group">
-							<label class="small" for="bedTemp" class="small" >Bed Temp</label>
-							<input type="text" class="form-control" name="bedTemp" value= "50">
-						</div>
-					</div>
-				</div> 
+              <div class="row">
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label class="small" for="meshX">Mesh X Dimension</label>
+                    <input type="text" class="form-control" name="meshX" value="100">
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label class="small" for="meshY">Mesh Y Dimension</label>
+                    <input type="text" class="form-control" name="meshY" value="100">
+                  </div>
+                </div>
 
+                <div class="col-lg-4 d-flex align-items-center justify-content-center" style="padding-top: 11px;">
+                  <button type="submit" class="btn btn-success flex-fill">
+                    Mesh Only
+                  </button>
+                </div>
+              </div>
+            </div>
 
-				<div class="row my-n3">
-					<div class="col-md-4">						
+            <div class="col-lg-5">
+              <img src="{{url_for('static', filename='Capture2.JPG')}}" align="middle" class="img-fluid" />
+              <div class="row">
+                <div class="col-lg-12">
+                  <p> Feature request to print out only the mesh to be <br>
+                    used for custom filters.<br><br>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
 
-						<div class="form-group">
-							<label class="small" for="printSpeed">Print Speed</label>
-							<input type="text" class="form-control" name="printSpeed" value= "40">
-						</div>	
-					</div>						
-					<div class="col-md-4">
-						<div class="form-group">
-							<label class="small" for="customGcode">Custom Gcode </label>
-							<textarea class="form-control" name="customGcode"  rows="1" >;G29</textarea>
-						</div>
-					</div>
-
-
-				</div> 
-
-				<div class="row my-n3">
-					<div class="col-md-4">
-									
-
-						<div class="form-group">
-							<label class="small" for="meshX">Mesh X Dimension</label>
-							<input type="text" class="form-control" name="meshX" value= "100">
-						</div>	
-					</div>						
-					<div class="col-md-4">
-						<div class="form-group">
-							<label class="small" for="meshY">Mesh Y Dimension</label>
-							<input type="text" class="form-control" name="meshY" value= "100">
-						</div>
-					</div>
-
-					<div class="col-md-4">
-						<div class="col my-4">
-							<button type="submit" class="btn btn-success">
-								Mesh Only
-							</button>
-						</div>
-					</div> 
-				</div> 
-				<br><br>
-			</div>
-			<div class="col-md-6">
-				<img src="{{url_for('static', filename='Capture2.JPG')}}" align="middle" />
-				<div class="row">
-					<div class="col-md-12">
-						<p>	Feature request to print out only the mesh to be <br>
-						used for custom filters.<br><br>   
-						</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-
-</a>  
-	</form>
-  </body>
-</html> 
+</html>
