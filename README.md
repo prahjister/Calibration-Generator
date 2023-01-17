@@ -9,13 +9,18 @@ https://www.cnx-software.com/2020/07/08/3d-printer-retraction-calibration-vol-ii
 The code assumes that the following is setup & configure for running with your profile:
 
 - Python3 (with pip) : https://www.python.org/downloads/
-- pyinstaller : https://www.pyinstaller.org/
-- pyuic5-tool : https://pypi.org/project/pyuic5-tool/
-- pyqt5ac : https://pypi.org/project/pyqt5ac/
 
-Run the commands in the following order to generate the EXE:
+Install dependencies:
+- pip install -r requirements.txt
 
+Run the commands in the following order to generate the executable:
+
+Windows:
 - ui2py.bat
 - convertexe.bat
 
-This will create an EXE in the .\dist\ folder 
+MacOS or Linux:
+- ./ui2py
+- ./convertexe
+
+This will create an executable in the "dist" folder 

@@ -1,0 +1,9 @@
+altgraph==0.17
+click==7.1.2
+macholib==1.14
+pyinstaller==4.0
+pyinstaller-hooks-contrib==2020.9
+PyQt5==5.15.1
+PyQt5-sip==12.8.1
+pyqt5ac==1.2.1
+PyYAML==5.3.1

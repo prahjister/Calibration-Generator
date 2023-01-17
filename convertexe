@@ -1,0 +1,3 @@
+#!/bin/sh
+
+pyinstaller --noconsole "./RetCalMain.py" -F
